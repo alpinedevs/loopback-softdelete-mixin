@@ -51,7 +51,7 @@ export default (Model, { deletedAt = 'deletedAt', scrub = false }) => {
   Model.prototype.delete = Model.prototype.destroy;
 
   // Emulate default scope but with more flexibility.
-  const queryNonDeleted = {[deletedAt]: null};
+  const queryNonDeleted = {[deletedAt]: undefined};
 
   const _findOrCreate = Model.findOrCreate;
   Model.findOrCreate = function findOrCreateDeleted(query = {}, ...rest) {
